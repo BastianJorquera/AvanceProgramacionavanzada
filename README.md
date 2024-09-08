@@ -6,3 +6,5 @@ Integrantes:
   1. Matias Altamirano
   2. Catalina Marin
   3. Bastian Jorquera
+
+Para ejecutar el codigo: Descomprimir archivo e iniciar en ApacheNetBeans (última versión recomendada).
