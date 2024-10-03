@@ -1,6 +1,7 @@
 package newpackage;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Empleado {
@@ -31,6 +32,7 @@ public class Empleado {
     public LocalDate getFechaNaci() {
         return fechaNaci;
     }
+    
     public LocalDate getFechaContrato() {
         return fechaContrato;
     }

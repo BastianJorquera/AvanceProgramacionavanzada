@@ -1,6 +1,8 @@
 package newpackage;
 
-import newpackage.Empleado;
+import com.opencsv.exceptions.CsvValidationException;
+import controlador.Reporte;
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -8,17 +10,33 @@ import java.util.Scanner;
 
 public class Menu{
   private static Scanner scanner = new Scanner(System.in);
+  public static ArrayList<Empleado> listaEmpleado;
+  //public static final String path ="src\\main\\resources\\usuarios.csv";
   private static Sucursal sucursal;
 
   public static void inicializarSistema() {
-
+      
       LocalDate fechaCrea = LocalDate.of(2020, 3, 12);
       Ministerio ministerio = new Ministerio("Ministerio de Ejemplo","Id2013k", fechaCrea);
       sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
       System.out.println("Sistema inicializado con éxito.");
+      
   }
 
-  public static void mostrarMenu() {
+    /*public static void agregarEmpleado(Sucursal sucursal, Empleado a){
+      if(Sucursal.Escribir(a)){
+          sucursal.agregarEmpleado(a);
+      }
+  }*/
+    
+    public static String obtenerFechaCadena(LocalDate fecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
+        String fechaNacim = fecha.format(formatter);
+        return fechaNacim;
+    }
+  
+  
+  /*public static void mostrarMenu() {
       System.out.println("\n===== Menú Principal =====");
       System.out.println("1. Ingresar datos de empleado");
       System.out.println("2. Leer datos de empleados");
@@ -76,12 +94,11 @@ public class Menu{
 
       Empleado empleado = new Empleado(nombreEmpleado, rutEmpleado, fechaNaciEmpleado, fechaContratoEmpleado, cargoEmpleado, salarioEmpleado, departamentoEmpleado);
       sucursal.agregarEmpleado(empleado);
-  }
+  }*/
   
-  //crear funcion para agregar empleado a funcion (no se puede en las vistas
-  
+  //crear funcion para agregar empleado a
 
-  public static void buscarEmpleado() {
+  /*public static void buscarEmpleado() {
       boolean continuar = true;
       System.out.print("\nElija el método de búsqueda que más le favorezca: ");
       System.out.println("\n1. Buscar empleado mediante RUT");
@@ -133,7 +150,7 @@ public class Menu{
       } else {
           System.out.println("No se encontró ningún empleado con el RUT proporcionado.");
       }
-  }
+  }*/
 
 
   public static void eliminarEmpleado() {

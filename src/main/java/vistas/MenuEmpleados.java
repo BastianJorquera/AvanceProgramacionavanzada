@@ -36,6 +36,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
         lblMenuEmpleados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblMenuEmpleados.setText("Menú de Empleados");
 
+        btnAgregarEmpleado.setBackground(new java.awt.Color(255, 206, 228));
         btnAgregarEmpleado.setText("Agregar Empleado");
         btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,25 +73,25 @@ public class MenuEmpleados extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addComponent(lblMenuEmpleados))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnAgregarEmpleado)
-                        .addGap(31, 31, 31)
-                        .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(btnSalir)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(btnSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregarEmpleado)
+                            .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lblMenuEmpleados)
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarEmpleado)
-                    .addComponent(btnBuscarEmpleado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(btnAgregarEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscarEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(btnSalir)
                 .addGap(45, 45, 45))
         );

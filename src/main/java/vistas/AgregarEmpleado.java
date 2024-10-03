@@ -87,7 +87,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
 
         boxMinisterios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione (...)", "Ministerio del interior y seguridad pública", "Ministerio de Relaciones Exteriores", "Ministerio de defensa nacional", "Ministerio de Hacienda", "Secretaría general de la Presidencia", "Secretaría general de gobierno", "Ministerio de Economía", "Fomento y Turismo", "Ministerio de desarrollo social", "Ministerio de Educación", "Ministerio de Justicia y derechos humanos", "Ministerio de Trabajo y previsión social", "Ministerio de Obras Públicas", "Ministerio de salud", "Ministerio de vivienda y urbanismo", "Ministerio de agricultura", "Ministerio de Mínería", "Ministerio de transporte y comunicaciones", "Ministerio de Bienes nacionales", "Ministerio de energía", "Ministerio de Medioambiente", "Ministerio del deporte", "Ministerio de la mujer y la equidad de género", "Ministerio de las culturas, las artes y el Patrimonio cultural" }));
 
-        btnAgregarEmpleado.setText("Agregar Empleado");
+        btnAgregarEmpleado.setText("Agregar");
         btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarEmpleadoMouseClicked(evt);
@@ -207,7 +207,12 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         String cargo = boxCargo.getSelectedItem().toString();
         double salario = Double.parseDouble(txtSalarioEmpleado.getText());
         Empleado empleado = new Empleado(nombre, rut, fechaNacimiento, fechaContrato, cargo, salario, ministerio);
-        //Sucursal.agregarEmpleado(empleado);
+        /*if(Sucursal.agregarEmpleado(empleado)){
+            //se agrego con exito
+        else{
+        //envía un mensaje que ya existe/no se puso registrar
+        }
+        */
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
     /**
