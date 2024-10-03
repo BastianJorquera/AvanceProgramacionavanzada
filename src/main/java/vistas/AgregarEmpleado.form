@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jList1">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <Component id="lblAgregarEmpleado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblNombreEmpleado" max="32767" attributes="0"/>
+                      <Component id="lblRutEmpleado" max="32767" attributes="0"/>
+                      <Component id="lblFechaNacimientoEmpleado" max="32767" attributes="0"/>
+                      <Component id="lblCargoEmpleado" max="32767" attributes="0"/>
+                      <Component id="lblSalarioEmpleado" max="32767" attributes="0"/>
+                      <Component id="lblMinisterioEmpleado" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="btnVolverMenuEmpleados" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblMensajeErrorFecha" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="btnAgregarEmpleado" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtNombreEmpleado" alignment="0" pref="160" max="32767" attributes="0"/>
+                              <Component id="txtRutEmpleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtFechaNacimientoEmpleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtSalarioEmpleado" alignment="0" max="32767" attributes="0"/>
+                              <Component id="boxMinisterios" pref="0" max="32767" attributes="0"/>
+                              <Component id="boxCargo" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblFormatoFecha" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFormatoRut" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="lblAgregarEmpleado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblRutEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRutEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFormatoRut" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFechaNacimientoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFechaNacimientoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFormatoFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblMinisterioEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boxMinisterios" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCargoEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boxCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSalarioEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSalarioEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblMensajeErrorFecha" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAgregarEmpleado" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVolverMenuEmpleados" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblAgregarEmpleado">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Agregar Empleado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNombreEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRutEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rut:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFechaNacimientoEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha Nacimiento:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCargoEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cargo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSalarioEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salario:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMinisterioEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ministerio:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNombreEmpleado">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEmpleadoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtRutEmpleado">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFechaNacimientoEmpleado">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSalarioEmpleado">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormatoFecha">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="(YYYY-MM-DD)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="boxMinisterios">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="25">
+            <StringItem index="0" value="Seleccione (...)"/>
+            <StringItem index="1" value="Ministerio del interior y seguridad p&#xfa;blica"/>
+            <StringItem index="2" value="Ministerio de Relaciones Exteriores"/>
+            <StringItem index="3" value="Ministerio de defensa nacional"/>
+            <StringItem index="4" value="Ministerio de Hacienda"/>
+            <StringItem index="5" value="Secretar&#xed;a general de la Presidencia"/>
+            <StringItem index="6" value="Secretar&#xed;a general de gobierno"/>
+            <StringItem index="7" value="Ministerio de Econom&#xed;a"/>
+            <StringItem index="8" value="Fomento y Turismo"/>
+            <StringItem index="9" value="Ministerio de desarrollo social"/>
+            <StringItem index="10" value="Ministerio de Educaci&#xf3;n"/>
+            <StringItem index="11" value="Ministerio de Justicia y derechos humanos"/>
+            <StringItem index="12" value="Ministerio de Trabajo y previsi&#xf3;n social"/>
+            <StringItem index="13" value="Ministerio de Obras P&#xfa;blicas"/>
+            <StringItem index="14" value="Ministerio de salud"/>
+            <StringItem index="15" value="Ministerio de vivienda y urbanismo"/>
+            <StringItem index="16" value="Ministerio de agricultura"/>
+            <StringItem index="17" value="Ministerio de M&#xed;ner&#xed;a"/>
+            <StringItem index="18" value="Ministerio de transporte y comunicaciones"/>
+            <StringItem index="19" value="Ministerio de Bienes nacionales"/>
+            <StringItem index="20" value="Ministerio de energ&#xed;a"/>
+            <StringItem index="21" value="Ministerio de Medioambiente"/>
+            <StringItem index="22" value="Ministerio del deporte"/>
+            <StringItem index="23" value="Ministerio de la mujer y la equidad de g&#xe9;nero"/>
+            <StringItem index="24" value="Ministerio de las culturas, las artes y el Patrimonio cultural"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAgregarEmpleado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar Empleado"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarEmpleadoMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnVolverMenuEmpleados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVolverMenuEmpleadosMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormatoRut">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="(ej. 12.345.678-9)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="boxCargo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="13">
+            <StringItem index="0" value="Seleccione (...)"/>
+            <StringItem index="1" value="Ministro/a"/>
+            <StringItem index="2" value="Subsecretar&#xed;a"/>
+            <StringItem index="3" value="Asesor&#xed;a"/>
+            <StringItem index="4" value="Jefe de Divisi&#xf3;n"/>
+            <StringItem index="5" value="Jefe de Departamento"/>
+            <StringItem index="6" value="Jefe de Secci&#xf3;n"/>
+            <StringItem index="7" value="Jefe de Oficina"/>
+            <StringItem index="8" value="Secretario/a Regional Ministerial (SEREMI)"/>
+            <StringItem index="9" value="Personal Administrativo"/>
+            <StringItem index="10" value="Personal de Prensa y Comunicaciones"/>
+            <StringItem index="11" value="Personal Tecnologia"/>
+            <StringItem index="12" value="Personal Auxiliar"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMensajeErrorFecha">
+    </Component>
+  </SubComponents>
+</Form>

@@ -77,6 +77,9 @@ public class Menu{
       Empleado empleado = new Empleado(nombreEmpleado, rutEmpleado, fechaNaciEmpleado, fechaContratoEmpleado, cargoEmpleado, salarioEmpleado, departamentoEmpleado);
       sucursal.agregarEmpleado(empleado);
   }
+  
+  //crear funcion para agregar empleado a funcion (no se puede en las vistas
+  
 
   public static void buscarEmpleado() {
       boolean continuar = true;
