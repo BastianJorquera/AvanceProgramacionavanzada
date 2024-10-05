@@ -9,11 +9,15 @@ controlador\Reporte.class
 vistas\MenuEmpleados$5.class
 newpackage\Menu.class
 vistas\AgregarEmpleado$3.class
+vistas\BuscarEmpleado$3.class
 vistas\MenuEmpleados$4.class
+vistas\BuscarEmpleado$2.class
 newpackage\Ministerio.class
 vistas\AgregarEmpleado$2.class
 newpackage\Main.class
 vistas\MenuEmpleados$3.class
 newpackage\Empleado.class
+vistas\BuscarEmpleado.class
 newpackage\Gobierno.class
+vistas\BuscarEmpleado$1.class
 vistas\AgregarEmpleado$1.class

@@ -2,7 +2,6 @@ package newpackage;
 
 import com.opencsv.exceptions.CsvValidationException;
 import controlador.Reporte;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -21,13 +20,13 @@ public class Menu{
       sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
       System.out.println("Cargando datos...");
       empleados= new Reporte(path);
-      leerReporte(empleados);
+      leerReporte(sucursal);
       System.out.println("Sistema inicializado con éxito.");
       
   }
         //al tener la verificacion en la clase Reporte, no la necesito en la clase sucursal, pasa directamente a guardarse en el array
         //pero si necesito un boolean para retornar al jFrame de AgregarEmpleado
-    public static boolean agregarRegistro(Reporte empleados, Sucursal sucursal, Empleado a){
+    public static boolean agregarRegistro(Empleado a){
         if(empleados.Escribir(sucursal, a)){
           sucursal.agregarEmpleado(a);
           return true;
@@ -36,20 +35,17 @@ public class Menu{
   }
     
     public static String obtenerFechaCadena(LocalDate fecha){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaNacim = fecha.format(formatter);
         return fechaNacim;
     }
     
-        public static void leerReporte(Reporte empleados) throws CsvValidationException{
-        
-        empleados.Leer();        
-        for(int i=0;i<empleados.getSizeEmpleado();i++){
-            sucursal.agregarEmpleado(empleados.getEmpleado(i));
-        }
-        
-        for(int i=0;i<empleados.getSizeEmpleado();i++){
-            empleados.getEmpleado(i).leerEmpleado();
+        public static void leerReporte(Sucursal sucursal) throws CsvValidationException{
+        System.out.println("leerReporte");
+        empleados.Leer(sucursal);        
+        System.out.println("leerReporte2");
+        for(int i=0;i<sucursal.getSizeEmpleado();i++){
+            sucursal.getEmpleado(i).leerEmpleado();
         }
     }
   
@@ -187,19 +183,19 @@ public class Menu{
       return scanner.nextLine();
   }
 
-  public static LocalDate obtenerFecha(String mensaje) {
-      LocalDate fecha = null;
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      while (fecha == null) {
-          try {
-              String fechaTexto = obtenerDato(mensaje);
-              fecha = LocalDate.parse(fechaTexto, formatter);
-          } catch (DateTimeParseException e) {
-              System.out.println("Fecha inválida. Por favor ingrese la fecha en el formato YYYY-MM-DD.");
-          }
-      }
-      return fecha;
-  }
+    public static LocalDate obtenerFecha(String mensaje) {
+        System.out.println("Procesando la fecha: " + mensaje);
+        LocalDate fecha = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            fecha = LocalDate.parse(mensaje, formatter);  // Intenta parsear
+        } catch (DateTimeParseException e) {
+            System.out.println("Fecha inválida. Asegúrate de usar el formato YYYY-MM-DD.");
+        }
+        
+        return fecha;  // Retorna null si la fecha es inválida
+    }
 
   public static double obtenerSalario(String mensaje) {
       while (true) {

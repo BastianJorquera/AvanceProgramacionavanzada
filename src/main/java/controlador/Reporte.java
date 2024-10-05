@@ -34,6 +34,7 @@ public class Reporte {
     //Metodos
     public void Leer(Sucursal empleados) throws CsvValidationException{
         File file = new File(this.path);
+        
         try{
             FileReader inputFile = new FileReader(file);
             CSVParser parser = new CSVParserBuilder()
@@ -48,11 +49,13 @@ public class Reporte {
             int i=0; //Primer linea es un header, por lo que se salta
             while((datos = csvReader.readNext())!= null){
                 if(i>0){
+                    System.out.println("leyendo csv");
                     Empleado empleado = new Empleado(datos[0],datos[1],obtenerFecha(datos[2]),obtenerFecha(datos[3]), datos[4], Double.parseDouble(datos[5]), datos[6]);
                     empleados.agregarEmpleado(empleado);
                 }
                 i++;
             }      
+            System.out.println("Datos cargados desde csv");
             csvReader.close();
             inputFile.close();
         }catch(IOException e){
@@ -65,7 +68,7 @@ public class Reporte {
         }
     }
     
-   /*public boolean Escribir(String[] registro) {
+   public boolean Escribir(String[] registro, Sucursal empleados) {
     File file = new File(this.path);
     try {
         FileWriter outputFile = new FileWriter(file, true);
@@ -74,11 +77,11 @@ public class Reporte {
                                  CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                                  "\n");
         
-        if(usuarioYaExistente(registro[0], )){
+        if(usuarioYaExistente(registro[1], empleados)){
             return false;
         }
         Empleado empleado = new Empleado(registro[0],registro[1],obtenerFecha(registro[2]),obtenerFecha(registro[3]), registro[4], Double.parseDouble(registro[5]), registro[6]);
-        listaEmpleados.add(empleado);
+        empleados.agregarEmpleado(empleado);
         csvWriter.writeNext(registro);
         
         outputFile.close();
@@ -90,7 +93,7 @@ public class Reporte {
         System.out.println("Operación de escritura completada.");
     }
     return true;
-    }   */
+    }
 
    
    public boolean Escribir(Sucursal empleado, Empleado u) {
@@ -126,6 +129,6 @@ public class Reporte {
        if(empleados.obtenerEmpleado(rut)!=null){
            return true;
        }
-       return false;
+          return false;
    }
 }

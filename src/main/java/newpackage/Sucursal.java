@@ -39,6 +39,15 @@ public class Sucursal{
   public void agregarEmpleado(Empleado empleado){
       empleados.add(empleado);
   }
+  
+  public int getSizeEmpleado(){
+      System.out.println("tamaño arreglo empleados:" +empleados.size());
+      return empleados.size();
+  }
+  
+      public Empleado getEmpleado(int index){
+        return this.empleados.get(index);
+    }
 
   public boolean eliminarEmpleado(String rut) {
     for (Empleado empleado : empleados) {

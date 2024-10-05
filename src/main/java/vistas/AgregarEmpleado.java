@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import newpackage.Empleado;
+import newpackage.Menu;
 import newpackage.Sucursal;
 import newpackage.Ministerio;
 
@@ -110,46 +111,50 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(lblAgregarEmpleado)
-                .addGap(95, 95, 95))
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblRutEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblFechaNacimientoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCargoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSalarioEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblMinisterioEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnVolverMenuEmpleados))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMensajeEmergente)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAgregarEmpleado)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                .addComponent(txtRutEmpleado)
-                                .addComponent(txtFechaNacimientoEmpleado)
-                                .addComponent(txtSalarioEmpleado)
-                                .addComponent(boxMinisterios, 0, 1, Short.MAX_VALUE)
-                                .addComponent(boxCargo, 0, 1, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblFormatoFecha)
-                                .addComponent(lblFormatoRut)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblMensajeEmergente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregarEmpleado)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblRutEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblFechaNacimientoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCargoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblSalarioEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblMinisterioEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(btnVolverMenuEmpleados)))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(boxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSalarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(boxMinisterios, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFechaNacimientoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRutEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFormatoFecha)
+                                    .addComponent(lblFormatoRut))))))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblAgregarEmpleado)
+                .addGap(113, 113, 113))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblAgregarEmpleado)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEmpleado)
                     .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,13 +180,13 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSalarioEmpleado)
                     .addComponent(txtSalarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(lblMensajeEmergente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarEmpleado)
-                    .addComponent(btnVolverMenuEmpleados))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolverMenuEmpleados)
+                    .addComponent(btnAgregarEmpleado))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -198,31 +203,64 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverMenuEmpleadosMouseClicked
 
     private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
-        // TODO add your handling code here:
-        String nombre = txtNombreEmpleado.getText();
-        String rut = txtRutEmpleado.getText();
-        LocalDate fechaNacimiento= obtenerFechaVistas(txtFechaNacimientoEmpleado.getText());
+        // Recuperar los datos de los campos de texto
+        String nombre = txtNombreEmpleado.getText().trim();
+        String rut = txtRutEmpleado.getText().trim();
+        String rutFormateado = formatearRut(rut);
+        txtRutEmpleado.setText(rutFormateado);  // Actualizar el campo de texto con el formato
+        
+        String fechaNacimientoTexto = txtFechaNacimientoEmpleado.getText().trim();
+        String salarioTexto = txtSalarioEmpleado.getText().trim();
+
+        // Verificar que todos los campos obligatorios estén completos
+        if (nombre.isEmpty() || rut.isEmpty() || fechaNacimientoTexto.isEmpty() || salarioTexto.isEmpty()) {
+            lblMensajeEmergente.setText("Por favor, complete todos los campos obligatorios.");
+            lblMensajeEmergente.setForeground(Color.red);
+            return;  // Detener la ejecución si hay campos vacíos
+        }
+
+        LocalDate fechaNacimiento = obtenerFechaVistas(fechaNacimientoTexto);
+
+        // Si la fecha es inválida (es decir, si obtenerFechaVistas retornó null), se detiene la ejecución
+        if (fechaNacimiento == null) {
+            return;  // No continúa si la fecha es inválida
+        }
+
         LocalDate fechaContrato = LocalDate.now();
         String ministerio = boxMinisterios.getSelectedItem().toString();
         String cargo = boxCargo.getSelectedItem().toString();
-        double salario = Double.parseDouble(txtSalarioEmpleado.getText());
-        Empleado empleado = new Empleado(nombre, rut, fechaNacimiento, fechaContrato, cargo, salario, ministerio);
-        /*if(Sucursal.agregarRegistro(empleado)){
-            //se agrego con exito
+        double salario = Double.parseDouble(salarioTexto);
+
+        // Crear el empleado con los datos obtenidos
+        Empleado empleado = new Empleado(nombre, rutFormateado, fechaNacimiento, fechaContrato, cargo, salario, ministerio);
+
+        // Intentar agregar el empleado a los registros
+        if (Menu.agregarRegistro(empleado)) {
+            // Si se agregó correctamente, muestra el mensaje de éxito
             lblMensajeEmergente.setText("Empleado agregado correctamente");
-            lblMensajeEmergente.setForeground(Color.green);
-            
-            //podria borrar los campos de texto
+            lblMensajeEmergente.setForeground(Color.green.darker().darker().darker());
+
+            // Limpiar los campos de texto después de agregar
+            limpiarCampos();
+        } else {
+            // Si no se pudo agregar (por ejemplo, si el empleado ya existe)
+            lblMensajeEmergente.setText("El empleado ya existe");
+            lblMensajeEmergente.setForeground(Color.red.darker().darker().darker());
         }
-        //envía un mensaje que ya existe/no se pudo registrar
-        lblMensajeEmergente.setText("El empleado ya existe");
-        lblMensajeEmergente.setForeground(Color.red);
-        
-        */
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
+    private void limpiarCampos() {
+        txtNombreEmpleado.setText("");
+        txtRutEmpleado.setText("");
+        txtFechaNacimientoEmpleado.setText("");
+        txtSalarioEmpleado.setText("");
+        boxMinisterios.setSelectedIndex(0);  // Restablecer a la primera opción
+        boxCargo.setSelectedIndex(0);        // Restablecer a la primera opción
+}
+    
+            
+    
     /**
-     * @param args the command line arguments
      */
     public static void iniciar() {
         /* Set the Nimbus look and feel */
@@ -257,20 +295,51 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     }
     
     public LocalDate obtenerFechaVistas(String txtFecha) {
-      lblMensajeEmergente.setText("");
-      LocalDate fecha = null;
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      while (fecha == null) {
-          try {
-              fecha = LocalDate.parse(txtFecha, formatter);
-          } catch (DateTimeParseException e) {
-              //que salga el mensaje en rojito
-              lblMensajeEmergente.setText("Formato de Fecha inválido");
-              lblMensajeEmergente.setForeground(Color.red);
-          }
-      }
-      return fecha;
-  }
+        lblMensajeEmergente.setText("");  // Limpia cualquier mensaje anterior
+        LocalDate fecha = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            // Intenta parsear la fecha ingresada por el usuario
+            fecha = LocalDate.parse(txtFecha, formatter);
+        } catch (DateTimeParseException e) {
+            // Si ocurre un error de formato, muestra el mensaje en rojo y retorna null
+            lblMensajeEmergente.setText("Formato de Fecha inválido. Use YYYY-MM-DD.");
+            lblMensajeEmergente.setForeground(Color.red.darker().darker().darker());
+            return null;  // Retorna null si la fecha es inválida
+        }
+        return fecha;  // Retorna la fecha válida
+    }
+    
+    public static String formatearRut(String rut) {
+        // Eliminar cualquier caracter que no sea número o K (si es dígito verificador)
+        rut = rut.replace(".", "").replace("-", "");
+
+        if (rut.length() < 2) {
+            return rut; // No formatear si es demasiado corto
+        }
+
+        // Separar el dígito verificador del número
+        String cuerpo = rut.substring(0, rut.length() - 1);
+        String verificador = rut.substring(rut.length() - 1);
+
+        // Agregar puntos al cuerpo del RUT
+        StringBuilder rutFormateado = new StringBuilder();
+        for (int i = cuerpo.length() - 1, j = 1; i >= 0; i--, j++) {
+            rutFormateado.insert(0, cuerpo.charAt(i));
+            if (j % 3 == 0 && i > 0) {
+                rutFormateado.insert(0, '.');
+            }
+        }
+
+        // Agregar el guion y el dígito verificador
+        rutFormateado.append("-").append(verificador);
+
+        return rutFormateado.toString();
+    }
+    
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCargo;
