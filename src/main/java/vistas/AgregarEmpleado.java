@@ -50,7 +50,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         btnVolverMenuEmpleados = new javax.swing.JButton();
         lblFormatoRut = new javax.swing.JLabel();
         boxCargo = new javax.swing.JComboBox<>();
-        lblMensajeErrorFecha = new javax.swing.JLabel();
+        lblMensajeEmergente = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -127,7 +127,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                     .addComponent(btnVolverMenuEmpleados))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMensajeErrorFecha)
+                    .addComponent(lblMensajeEmergente)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnAgregarEmpleado)
                         .addGroup(layout.createSequentialGroup()
@@ -176,9 +176,9 @@ public class AgregarEmpleado extends javax.swing.JFrame {
                     .addComponent(lblSalarioEmpleado)
                     .addComponent(txtSalarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMensajeErrorFecha)
+                .addComponent(lblMensajeEmergente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregarEmpleado)
                     .addComponent(btnVolverMenuEmpleados))
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -207,11 +207,17 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         String cargo = boxCargo.getSelectedItem().toString();
         double salario = Double.parseDouble(txtSalarioEmpleado.getText());
         Empleado empleado = new Empleado(nombre, rut, fechaNacimiento, fechaContrato, cargo, salario, ministerio);
-        /*if(Sucursal.agregarEmpleado(empleado)){
+        /*if(Sucursal.agregarRegistro(empleado)){
             //se agrego con exito
-        else{
-        //envía un mensaje que ya existe/no se puso registrar
+            lblMensajeEmergente.setText("Empleado agregado correctamente");
+            lblMensajeEmergente.setForeground(Color.green);
+            
+            //podria borrar los campos de texto
         }
+        //envía un mensaje que ya existe/no se pudo registrar
+        lblMensajeEmergente.setText("El empleado ya existe");
+        lblMensajeEmergente.setForeground(Color.red);
+        
         */
     }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
@@ -251,7 +257,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     }
     
     public LocalDate obtenerFechaVistas(String txtFecha) {
-      lblMensajeErrorFecha.setText("");
+      lblMensajeEmergente.setText("");
       LocalDate fecha = null;
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       while (fecha == null) {
@@ -259,8 +265,8 @@ public class AgregarEmpleado extends javax.swing.JFrame {
               fecha = LocalDate.parse(txtFecha, formatter);
           } catch (DateTimeParseException e) {
               //que salga el mensaje en rojito
-              lblMensajeErrorFecha.setText("Formato de Fecha inválido");
-              lblMensajeErrorFecha.setForeground(Color.red);
+              lblMensajeEmergente.setText("Formato de Fecha inválido");
+              lblMensajeEmergente.setForeground(Color.red);
           }
       }
       return fecha;
@@ -278,7 +284,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaNacimientoEmpleado;
     private javax.swing.JLabel lblFormatoFecha;
     private javax.swing.JLabel lblFormatoRut;
-    private javax.swing.JLabel lblMensajeErrorFecha;
+    private javax.swing.JLabel lblMensajeEmergente;
     private javax.swing.JLabel lblMinisterioEmpleado;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblRutEmpleado;

@@ -73,4 +73,7 @@ public class Empleado {
              this.departamento = nuevoDepartamento;
              System.out.println("Empleado " + this.nombre + " transferido del departamento " + antiguoDepartamento + " al departamento " + nuevoDepartamento);
          }
+    public void leerEmpleado(){
+        System.out.println("Nombre: " + nombre + " ||  Rut: " + rut);
+    }
 }

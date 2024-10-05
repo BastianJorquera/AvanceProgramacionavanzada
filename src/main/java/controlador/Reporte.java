@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import newpackage.Empleado;
 import static newpackage.Menu.obtenerFecha;
 import static newpackage.Menu.obtenerFechaCadena;
+import newpackage.Sucursal;
 
 /**
  *
@@ -33,11 +34,11 @@ public class Reporte {
     
     //Getters y Setters
 
-    public Empleado getUsuario(int index){
+    public Empleado getEmpleado(int index){
         return this.listaEmpleados.get(index);
     }
     
-    public int getSizeUsuarios(){
+    public int getSizeEmpleado(){
         return this.listaEmpleados.size();
     }
     
@@ -104,7 +105,7 @@ public class Reporte {
     }   
 
    
-   public boolean Escribir(Empleado u) {
+   public boolean Escribir(Sucursal empleado, Empleado u) {
     File file = new File(this.path);
     try {
         FileWriter outputFile = new FileWriter(file, true);
@@ -116,7 +117,7 @@ public class Reporte {
         if(usuarioYaExistente(u.getRut())){
             return false;
         }
-        listaEmpleados.add(u);
+        empleado.agregarEmpleado(u);
         String[] registro = {u.getNombre(),u.getRut(), obtenerFechaCadena(u.getFechaNaci()), obtenerFechaCadena(u.getFechaContrato()), u.getCargo(), Double.toString(u.getSalario()), u.getDepartamento()};
         csvWriter.writeNext(registro);
         

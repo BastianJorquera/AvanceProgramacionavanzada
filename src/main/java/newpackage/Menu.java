@@ -10,29 +10,47 @@ import java.util.Scanner;
 
 public class Menu{
   private static Scanner scanner = new Scanner(System.in);
-  public static ArrayList<Empleado> listaEmpleado;
-  //public static final String path ="src\\main\\resources\\usuarios.csv";
+  public static final String path ="src\\main\\resources\\empleados.csv";
   private static Sucursal sucursal;
+  private static Reporte empleados;
 
-  public static void inicializarSistema() {
+  public static void inicializarSistema() throws CsvValidationException {
       
       LocalDate fechaCrea = LocalDate.of(2020, 3, 12);
       Ministerio ministerio = new Ministerio("Ministerio de Ejemplo","Id2013k", fechaCrea);
       sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
+      System.out.println("Cargando datos...");
+      empleados= new Reporte(path);
+      leerReporte(empleados);
       System.out.println("Sistema inicializado con éxito.");
       
   }
-
-    /*public static void agregarEmpleado(Sucursal sucursal, Empleado a){
-      if(Sucursal.Escribir(a)){
+        //al tener la verificacion en la clase Reporte, no la necesito en la clase sucursal, pasa directamente a guardarse en el array
+        //pero si necesito un boolean para retornar al jFrame de AgregarEmpleado
+    public static boolean agregarRegistro(Reporte empleados, Sucursal sucursal, Empleado a){
+        if(empleados.Escribir(sucursal, a)){
           sucursal.agregarEmpleado(a);
+          return true;
       }
-  }*/
+      return false;
+  }
     
     public static String obtenerFechaCadena(LocalDate fecha){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
         String fechaNacim = fecha.format(formatter);
         return fechaNacim;
+    }
+    
+        public static void leerReporte(Reporte empleados) throws CsvValidationException{
+        
+        empleados.Leer();        
+        for(int i=0;i<empleados.getSizeEmpleado();i++){
+            sucursal.agregarEmpleado(empleados.getEmpleado(i));
+        }
+        
+        for(int i=0;i<empleados.getSizeEmpleado();i++){
+            empleados.getEmpleado(i).leerEmpleado();
+        }
     }
   
   

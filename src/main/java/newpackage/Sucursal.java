@@ -24,7 +24,7 @@ public class Sucursal{
     this.empleados = new ArrayList<>();
   }
 
-  public void agregarEmpleado(Empleado empleado) {
+  /*public void agregarEmpleado(Empleado empleado) {
       for (Empleado e : empleados) {
           if (e.getRut().equals(empleado.getRut())) {
               System.out.println("El empleado con RUT " + empleado.getRut() + " ya está en la sucursal.");
@@ -33,6 +33,11 @@ public class Sucursal{
       }
     empleados.add(empleado);
     System.out.println("Empleado agregado a la sucursal: " + empleado.getNombre());
+  }*/
+  
+  //agregar empleado que ingrese un objeto tipo Empleado
+  public void agregarEmpleado(Empleado empleado){
+      empleados.add(empleado);
   }
 
   public boolean eliminarEmpleado(String rut) {
