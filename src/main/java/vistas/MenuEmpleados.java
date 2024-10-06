@@ -50,6 +50,11 @@ public class MenuEmpleados extends javax.swing.JFrame {
         });
 
         btnBuscarEmpleado.setText("Buscar Empleado");
+        btnBuscarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarEmpleadoMouseClicked(evt);
+            }
+        });
         btnBuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarEmpleadoActionPerformed(evt);
@@ -117,6 +122,12 @@ public class MenuEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnBuscarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        BuscarEmpleado.iniciar();
+    }//GEN-LAST:event_btnBuscarEmpleadoMouseClicked
 
     /**
      * @param args the command line arguments

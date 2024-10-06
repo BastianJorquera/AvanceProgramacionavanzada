@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import newpackage.Empleado;
+import newpackage.Menu;
+import newpackage.Sucursal;
+
 /**
  *
  * @author bajog
@@ -15,6 +21,7 @@ public class BuscarEmpleado extends javax.swing.JFrame {
      */
     public BuscarEmpleado() {
         initComponents();
+        llenarTabla();
     }
 
     /**
@@ -30,7 +37,7 @@ public class BuscarEmpleado extends javax.swing.JFrame {
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableEmpleados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,7 +52,7 @@ public class BuscarEmpleado extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,10 +71,10 @@ public class BuscarEmpleado extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableEmpleados.setColumnSelectionAllowed(true);
+        tableEmpleados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableEmpleados);
+        tableEmpleados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,6 +118,24 @@ public class BuscarEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void llenarTabla(){
+        DefaultTableModel modeloDefault = new DefaultTableModel(new String[] {"Rut", "Nombre", "Ministerio", "Cargo"}, Menu.getSizeEmpleados());
+        tableEmpleados.setModel(modeloDefault);
+        
+        TableModel modeloDatos = tableEmpleados.getModel();
+        for (int i = 0; i<Menu.getSizeEmpleados();i++){
+            Empleado empleado = Menu.getEmpleados(i);
+            modeloDatos.setValueAt(Menu.getRutEmpleado(i), i, 0);
+            modeloDatos.setValueAt(Menu.getNombreEmpleado(i), i, 1);
+            modeloDatos.setValueAt(Menu.getMinisterioEmpleado(i), i, 2);
+            modeloDatos.setValueAt(Menu.getCargoEmpleado(i), i, 3);
+        }
+    }
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -149,8 +174,8 @@ public class BuscarEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBuscarEmpleado;
+    private javax.swing.JTable tableEmpleados;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

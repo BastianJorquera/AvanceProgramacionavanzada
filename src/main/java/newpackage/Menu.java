@@ -34,11 +34,35 @@ public class Menu{
       return false;
   }
     
+    public static int getSizeEmpleados(){
+        return sucursal.getSizeEmpleado();
+    }
+    
+    public static Empleado getEmpleados(int index){
+        return sucursal.getEmpleado(index);
+    }
+    
     public static String obtenerFechaCadena(LocalDate fecha){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaNacim = fecha.format(formatter);
         return fechaNacim;
     }
+    
+    public static String getNombreEmpleado(int index){
+        return sucursal.getEmpleado(index).getNombre();
+    }
+    
+    public static String getRutEmpleado(int index){
+        return sucursal.getEmpleado(index).getRut();
+    }
+        
+    public static String getMinisterioEmpleado(int index){
+        return sucursal.getEmpleado(index).getDepartamento();
+    }
+            
+    public static String getCargoEmpleado(int index){
+        return sucursal.getEmpleado(index).getCargo();
+    }   
     
         public static void leerReporte(Sucursal sucursal) throws CsvValidationException{
         System.out.println("leerReporte");
