@@ -1,14 +1,10 @@
 package newpackage;
 
-import com.opencsv.CSVWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Sucursal{
+  // Atributos privados de la clase Sucursal
   private String nameSucursal;
   private String idSucursal;
   private String direccion;
@@ -17,7 +13,7 @@ public class Sucursal{
   private String region;
   private Ministerio ministerio;
   private ArrayList<Empleado> empleados;
-    private String path;
+   // Constructor de la clase Sucursal
 
   public Sucursal(String nameSucursal, String idSucursal, String direccion, String comuna, String ciudad, String region, Ministerio ministerio) {
     this.nameSucursal = nameSucursal;
@@ -41,24 +37,21 @@ public class Sucursal{
     System.out.println("Empleado agregado a la sucursal: " + empleado.getNombre());
   }*/
   
-  //agregar empleado que ingrese un objeto tipo Empleado
+  // Método para agregar un empleado a la sucursal
   public void agregarEmpleado(Empleado empleado){
       empleados.add(empleado);
   }
-  
+  // Método para obtener el número de empleados en la sucursal
   public int getSizeEmpleado(){
+      System.out.println("tamaño arreglo empleados:" +empleados.size());
       return empleados.size();
   }
+  
   
       public Empleado getEmpleado(int index){
         return this.empleados.get(index);
     }
-      
-    public ArrayList getListaEmpleados() {
-        return this.empleados;  // Retorna el ArrayList de empleados
-    }
-    
-
+    // Método para eliminar un empleado por su RUT
   public boolean eliminarEmpleado(String rut) {
     for (Empleado empleado : empleados) {
         if (empleado.getRut().equals(rut)) {
@@ -69,25 +62,7 @@ public class Sucursal{
     }
     return false;
   }
-  
-    public Empleado eliminarGetEmpleado(String rut) {
-        Empleado empleadoEliminado = null;
-
-        // Usar un iterador para evitar problemas de concurrencia al eliminar
-        Iterator<Empleado> iterator = empleados.iterator();
-        while (iterator.hasNext()) {
-            Empleado empleado = iterator.next();
-            if (empleado.getRut().equals(rut)) {
-                empleadoEliminado = empleado;
-                iterator.remove(); // Elimina el empleado de la lista
-                return empleadoEliminado; // Retorna el empleado eliminado
-            }
-        }
-
-        return null; // Retorna null si no se encontró el empleado
-    }
-
-
+    // Método para listar todos los empleados de la sucursal
   public void listarEmpleados() {
     if (empleados.isEmpty()) {
         System.out.println("No hay empleados en la sucursal.");
@@ -117,7 +92,7 @@ public class Sucursal{
     }
     System.out.println("No se encontró ningún empleado con el Nombre: " + nombre + " o/y en el departamento: " + departamento);
   }
-
+ // Método para listar todos los empleados de la sucursal
   private void mostrarDatosEmpleado(Empleado empleado) {
     System.out.println("\n===== Datos del Empleado =====");
     System.out.println("Nombre: " + empleado.getNombre());
@@ -129,7 +104,7 @@ public class Sucursal{
     System.out.println("Departamento: " + empleado.getDepartamento());
     System.out.println("===============================");
   }
-
+// Método para obtener y mostrar los datos de un empleado por su RUT
   public Empleado obtenerEmpleado(String rut) {
       for (Empleado empleado : empleados) {
           if (empleado.getRut().equals(rut)) {
@@ -139,7 +114,7 @@ public class Sucursal{
       return null; 
   }
   
-
+// Métodos getter y setter para los atributos de la clase
   public String getNameSucursal() {
     return nameSucursal;
   }
@@ -194,4 +169,11 @@ public class Sucursal{
   public List<Empleado> getEmpleados() {
     return empleados;
   }
+
+// Método para obtener una lista de empleados ordenada por salario (de mayor a menor)
+public List<Empleado> obtenerEmpleadosOrdenadosPorSalario() {
+    List<Empleado> empleadosOrdenados = new ArrayList<>(empleados);
+    empleadosOrdenados.sort((e1, e2) -> Double.compare(e2.getSalario(), e1.getSalario()));
+    return empleadosOrdenados;
+   }
 }
