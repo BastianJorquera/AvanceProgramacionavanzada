@@ -1,16 +1,12 @@
 package newpackage;
 
-import com.opencsv.CSVWriter;
+
 import com.opencsv.exceptions.CsvValidationException;
 import controlador.Reporte;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu{
