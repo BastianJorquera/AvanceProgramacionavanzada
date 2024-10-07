@@ -1,6 +1,11 @@
 package newpackage;
 
+import com.opencsv.CSVWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Sucursal{
@@ -12,6 +17,7 @@ public class Sucursal{
   private String region;
   private Ministerio ministerio;
   private ArrayList<Empleado> empleados;
+    private String path;
 
   public Sucursal(String nameSucursal, String idSucursal, String direccion, String comuna, String ciudad, String region, Ministerio ministerio) {
     this.nameSucursal = nameSucursal;
@@ -41,14 +47,17 @@ public class Sucursal{
   }
   
   public int getSizeEmpleado(){
-      System.out.println("tamaño arreglo empleados:" +empleados.size());
       return empleados.size();
   }
-  
   
       public Empleado getEmpleado(int index){
         return this.empleados.get(index);
     }
+      
+    public ArrayList getListaEmpleados() {
+        return this.empleados;  // Retorna el ArrayList de empleados
+    }
+    
 
   public boolean eliminarEmpleado(String rut) {
     for (Empleado empleado : empleados) {
@@ -60,6 +69,24 @@ public class Sucursal{
     }
     return false;
   }
+  
+    public Empleado eliminarGetEmpleado(String rut) {
+        Empleado empleadoEliminado = null;
+
+        // Usar un iterador para evitar problemas de concurrencia al eliminar
+        Iterator<Empleado> iterator = empleados.iterator();
+        while (iterator.hasNext()) {
+            Empleado empleado = iterator.next();
+            if (empleado.getRut().equals(rut)) {
+                empleadoEliminado = empleado;
+                iterator.remove(); // Elimina el empleado de la lista
+                return empleadoEliminado; // Retorna el empleado eliminado
+            }
+        }
+
+        return null; // Retorna null si no se encontró el empleado
+    }
+
 
   public void listarEmpleados() {
     if (empleados.isEmpty()) {

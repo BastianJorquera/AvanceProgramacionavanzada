@@ -11,8 +11,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import newpackage.Empleado;
+import newpackage.Menu;
 import static newpackage.Menu.obtenerFecha;
 import static newpackage.Menu.obtenerFechaCadena;
 import newpackage.Sucursal;
@@ -46,10 +50,10 @@ public class Reporte {
                                                 .build();
             
             String[] datos;
+            System.out.println("leyendo csv");
             int i=0; //Primer linea es un header, por lo que se salta
             while((datos = csvReader.readNext())!= null){
                 if(i>0){
-                    System.out.println("leyendo csv");
                     Empleado empleado = new Empleado(datos[0],datos[1],obtenerFecha(datos[2]),obtenerFecha(datos[3]), datos[4], Double.parseDouble(datos[5]), datos[6]);
                     empleados.agregarEmpleado(empleado);
                 }
@@ -67,6 +71,7 @@ public class Reporte {
             System.out.println("Programa corriendo...");
         }
     }
+    
     
    public boolean Escribir(String[] registro, Sucursal empleados) {
     File file = new File(this.path);
@@ -96,8 +101,8 @@ public class Reporte {
     }
 
    
-   public boolean Escribir(Sucursal empleado, Empleado u) {
-    File file = new File(this.path);
+   public boolean EscribirCSV(Sucursal empleado, Empleado u ){
+       File file = new File(this.path);
     try {
         FileWriter outputFile = new FileWriter(file, true);
         CSVWriter csvWriter = new CSVWriter(outputFile, ';',
@@ -108,12 +113,12 @@ public class Reporte {
         if(usuarioYaExistente(u.getRut(), empleado)){
             return false;
         }
-        empleado.agregarEmpleado(u);
+        
         String[] registro = {u.getNombre(),u.getRut(), obtenerFechaCadena(u.getFechaNaci()), obtenerFechaCadena(u.getFechaContrato()), u.getCargo(), Double.toString(u.getSalario()), u.getDepartamento()};
         csvWriter.writeNext(registro);
         
         outputFile.close();
-        System.out.println("Nuevo registro añadido exitosamente.");
+        System.out.println("Registro añadido exitosamente.");
     } catch(IOException e) {
         System.out.print("Error al escribir en el archivo: ");
         e.printStackTrace();
@@ -121,7 +126,7 @@ public class Reporte {
         System.out.println("Operación de escritura completada.");
     }
     return true;
-    }   
+   }
     
    
    private boolean usuarioYaExistente(String rut, Sucursal empleados){
@@ -131,4 +136,56 @@ public class Reporte {
        }
           return false;
    }
+   
+       public void actualizarCSV(Sucursal sucursal) {
+           ArrayList<Empleado> listaEmpleados = sucursal.getListaEmpleados();
+           if (listaEmpleados == null) {
+           System.out.println("Error: La lista de empleados es nula.");
+           return;}
+        try {
+            // Abrir el archivo en modo de escritura, eliminando el contenido existente
+            FileWriter outputFile = new FileWriter(this.path, false);  // 'false' indica que no se debe hacer append, se sobrescribe
+
+            // Crear el escritor CSV con el separador de campos
+            CSVWriter csvWriter = new CSVWriter(outputFile, ';', 
+                                                CSVWriter.NO_QUOTE_CHARACTER, 
+                                                CSVWriter.DEFAULT_ESCAPE_CHARACTER, 
+                                                CSVWriter.DEFAULT_LINE_END);
+
+            // Escribir una fila vacía al inicio para usarla como índice
+            String[] filaVacia = { "", "", "", "", "", "", "" }; // Número de columnas según tu CSV
+            csvWriter.writeNext(filaVacia);
+
+            // Escribir los datos del ArrayList en el CSV
+            for (Empleado empleado : listaEmpleados) {
+                String[] registro = {
+                    empleado.getNombre(),
+                    empleado.getRut(),
+                    obtenerFechaCadena(empleado.getFechaNaci()),
+                    obtenerFechaCadena(empleado.getFechaContrato()),
+                    empleado.getCargo(),
+                    Double.toString(empleado.getSalario()),
+                    empleado.getDepartamento()
+                };
+                csvWriter.writeNext(registro);
+            }
+
+            // Cerrar el escritor CSV y el archivo
+            csvWriter.close();
+            outputFile.close();
+            
+            System.out.println("Archivo CSV actualizado correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al sobrescribir el archivo CSV.");
+            e.printStackTrace();
+        }
+    }
+
+    // Método para formatear fechas en cadena (similar al que usaste antes)
+    public static String obtenerFechaCadena(LocalDate fecha) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return fecha.format(formatter);
+    }
+   
 }
+

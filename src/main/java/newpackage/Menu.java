@@ -1,17 +1,23 @@
 package newpackage;
 
+import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import controlador.Reporte;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu{
   private static Scanner scanner = new Scanner(System.in);
   public static final String path ="src\\main\\resources\\empleados.csv";
   private static Sucursal sucursal;
-  private static Reporte empleados;
+  private static Reporte reporte;
 
   public static void inicializarSistema() throws CsvValidationException {
       
@@ -19,7 +25,7 @@ public class Menu{
       Ministerio ministerio = new Ministerio("Ministerio de Ejemplo","Id2013k", fechaCrea);
       sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
       System.out.println("Cargando datos...");
-      empleados= new Reporte(path);
+      reporte= new Reporte(path);
       leerReporte(sucursal);
       System.out.println("Sistema inicializado con éxito.");
       
@@ -27,12 +33,20 @@ public class Menu{
         //al tener la verificacion en la clase Reporte, no la necesito en la clase sucursal, pasa directamente a guardarse en el array
         //pero si necesito un boolean para retornar al jFrame de AgregarEmpleado
     public static boolean agregarRegistro(Empleado a){
-        if(empleados.Escribir(sucursal, a)){
+        if(reporte.EscribirCSV(sucursal, a)){
           sucursal.agregarEmpleado(a);
           return true;
       }
       return false;
-  }
+    }
+    
+    public static void ActualizarCSVEmpleados(){
+        reporte.actualizarCSV(sucursal);
+    }
+    
+    public static ArrayList<Empleado> getEmpleadosSucursal() {
+        return sucursal.getListaEmpleados();  // Suponiendo que Sucursal tiene este método
+    }   
     
     public static int getSizeEmpleados(){
         return sucursal.getSizeEmpleado();
@@ -46,6 +60,10 @@ public class Menu{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaNacim = fecha.format(formatter);
         return fechaNacim;
+    }
+    
+    public static Empleado getEmpleadoPorRut(String rut){
+        return sucursal.obtenerEmpleado(rut);
     }
     
     public static String getNombreEmpleado(int index){
@@ -65,14 +83,15 @@ public class Menu{
     }   
     
         public static void leerReporte(Sucursal sucursal) throws CsvValidationException{
-        System.out.println("leerReporte");
-        empleados.Leer(sucursal);        
-        System.out.println("leerReporte2");
+        reporte.Leer(sucursal);     
+        System.out.println("Empleados registrados: ");
         for(int i=0;i<sucursal.getSizeEmpleado();i++){
             sucursal.getEmpleado(i).leerEmpleado();
         }
     }
-  
+        
+
+
   
   /*public static void mostrarMenu() {
       System.out.println("\n===== Menú Principal =====");
@@ -191,24 +210,23 @@ public class Menu{
   }*/
 
 
-  public static void eliminarEmpleado() {
-      String rutEliminar = obtenerDato("Ingrese el RUT del empleado que desea eliminar: ");
-      boolean eliminado = sucursal.eliminarEmpleado(rutEliminar);
-      System.out.println(eliminado ? "Empleado eliminado exitosamente." : "No se encontró el empleado para eliminar.");
-  }
+  
+    public static Empleado eliminarEmpleado(String rut){
+        Empleado empleadoEliminado;
+        return empleadoEliminado= sucursal.eliminarGetEmpleado(rut);
+    }
 
-  public static String obtenerDato(String mensaje) {
-      System.out.print(mensaje);
-      return scanner.nextLine();
-  }
+    public static String obtenerDato(String mensaje) {
+        System.out.print(mensaje);
+        return scanner.nextLine();
+    }
 
-  public static String obtenerDatoOpcional(String mensaje) {
-      System.out.print(mensaje);
-      return scanner.nextLine();
-  }
+    public static String obtenerDatoOpcional(String mensaje) {
+        System.out.print(mensaje);
+        return scanner.nextLine();
+    }
 
     public static LocalDate obtenerFecha(String mensaje) {
-        System.out.println("Procesando la fecha: " + mensaje);
         LocalDate fecha = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
