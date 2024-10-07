@@ -20,7 +20,7 @@ import newpackage.Sucursal;
 public class EditarEmpleado extends javax.swing.JFrame {
 
     private Empleado empleado;
-    private Border border;
+    private Border borderRed, borderGreen;
     
     public EditarEmpleado(Empleado empleado) {
         this.empleado = empleado;
@@ -30,7 +30,8 @@ public class EditarEmpleado extends javax.swing.JFrame {
         boxMinisterio.setSelectedItem(empleado.getDepartamento());
         boxCargo.setSelectedItem(empleado.getCargo());
         txtSalarioEmpleado.setText(Double.toString(empleado.getSalario()));
-        border = BorderFactory.createLineBorder(Color.red, 2);
+        borderRed = BorderFactory.createLineBorder(Color.red, 2);
+        borderGreen=BorderFactory.createLineBorder(Color.green, 2);
     }
 
 
@@ -205,13 +206,13 @@ public class EditarEmpleado extends javax.swing.JFrame {
         // Verificar que los campos obligatorios no estén vacíos
         if (nombre.isEmpty() || rut.isEmpty() || salarioTexto.isEmpty()) {
             if(nombre.isEmpty()){
-                txtNombreEmpleado.setBorder(this.border);
+                txtNombreEmpleado.setBorder(this.borderRed);
             }
             else if(rut.isEmpty()){
-                txtRutEmpleado.setBorder(this.border);
+                txtRutEmpleado.setBorder(this.borderRed);
             }
             else if(salarioTexto.isEmpty()){
-                txtSalarioEmpleado.setBorder(this.border);
+                txtSalarioEmpleado.setBorder(this.borderRed);
             }
             lblMensajeEmergente.setText("Por favor, complete todos los campos obligatorios.");
             lblMensajeEmergente.setForeground(Color.red.darker().darker());
@@ -233,7 +234,9 @@ public class EditarEmpleado extends javax.swing.JFrame {
         empleado.setSalario(salario);
         
         Menu.ActualizarCSVEmpleados();
-        
+        txtNombreEmpleado.setBorder(this.borderGreen);
+        txtRutEmpleado.setBorder(this.borderGreen);
+        txtSalarioEmpleado.setBorder(this.borderGreen);
         lblMensajeEmergente.setText("Empleado modificado correctamente.");
         lblMensajeEmergente.setForeground(Color.green.darker().darker());
         
