@@ -1,4 +1,4 @@
-Entrega avance asignatura INF2236 - Programación Avanzada 
+Entrega final Proyecto - INF2236 - Programación Avanzada 
 
 Grupo n° 15: Manejo de Funcionarios públicos por carteras Ministeriales
 
