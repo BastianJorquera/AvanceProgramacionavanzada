@@ -1,96 +1,94 @@
 package newpackage;
-
-import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
 import controlador.Reporte;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Menu{
-  private static Scanner scanner = new Scanner(System.in);
-  public static final String path ="src\\main\\resources\\empleados.csv";
-  private static Sucursal sucursal;
-  private static Reporte reporte;
+public class Menu {
+    // Scanner para entrada de usuario
+    private static Scanner scanner = new Scanner(System.in);
+    
+    // Ruta del archivo CSV de empleados
+    public static final String path = "src\\main\\resources\\empleados.csv";
+    
+    // Instancias de Sucursal y Reporte
+    private static Sucursal sucursal;
+    private static Reporte empleados;
 
-  public static void inicializarSistema() throws CsvValidationException {
-      
-      LocalDate fechaCrea = LocalDate.of(2020, 3, 12);
-      Ministerio ministerio = new Ministerio("Ministerio de Ejemplo","Id2013k", fechaCrea);
-      sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
-      System.out.println("Cargando datos...");
-      reporte= new Reporte(path);
-      leerReporte(sucursal);
-      System.out.println("Sistema inicializado con éxito.");
-      
-  }
-        //al tener la verificacion en la clase Reporte, no la necesito en la clase sucursal, pasa directamente a guardarse en el array
-        //pero si necesito un boolean para retornar al jFrame de AgregarEmpleado
-    public static boolean agregarRegistro(Empleado a){
-        if(reporte.EscribirCSV(sucursal, a)){
-          sucursal.agregarEmpleado(a);
-          return true;
-      }
-      return false;
+    // Método para inicializar el sistema
+    public static void inicializarSistema() throws CsvValidationException {
+        // Crear una instancia de Ministerio
+        LocalDate fechaCrea = LocalDate.of(2020, 3, 12);
+        Ministerio ministerio = new Ministerio("Ministerio de Ejemplo", "Id2013k", fechaCrea);
+        
+        // Crear una instancia de Sucursal
+        sucursal = new Sucursal("Sucursal Central", "001", "Av. Principal 123", "Comuna Ejemplo", "Ciudad Ejemplo", "Región Ejemplo", ministerio);
+        
+        System.out.println("Cargando datos...");
+        
+        // Crear una instancia de Reporte
+        empleados = new Reporte(path);
+        
+        // Leer los datos del archivo CSV
+        leerReporte(sucursal);
+        
+        System.out.println("Sistema inicializado con éxito.");
     }
-    
-    public static void ActualizarCSVEmpleados(){
-        reporte.actualizarCSV(sucursal);
+
+    // Método para agregar un nuevo empleado
+    public static boolean agregarRegistro(Empleado a) {
+        if (empleados.Escribir(sucursal, a)) {
+            sucursal.agregarEmpleado(a);
+            return true;
+        }
+        return false;
     }
-    
-    public static ArrayList<Empleado> getEmpleadosSucursal() {
-        return sucursal.getListaEmpleados();  // Suponiendo que Sucursal tiene este método
-    }   
-    
-    public static int getSizeEmpleados(){
+
+    // Método para obtener el número de empleados
+    public static int getSizeEmpleados() {
         return sucursal.getSizeEmpleado();
     }
-    
-    public static Empleado getEmpleados(int index){
+
+    // Método para obtener un empleado por su índice
+    public static Empleado getEmpleados(int index) {
         return sucursal.getEmpleado(index);
     }
-    
-    public static String obtenerFechaCadena(LocalDate fecha){
+
+    // Método para convertir una fecha LocalDate a String
+    public static String obtenerFechaCadena(LocalDate fecha) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaNacim = fecha.format(formatter);
         return fechaNacim;
     }
-    
-    public static Empleado getEmpleadoPorRut(String rut){
-        return sucursal.obtenerEmpleado(rut);
-    }
-    
-    public static String getNombreEmpleado(int index){
+
+    // Métodos para obtener información específica de un empleado por su índice
+    public static String getNombreEmpleado(int index) {
         return sucursal.getEmpleado(index).getNombre();
     }
-    
-    public static String getRutEmpleado(int index){
+
+    public static String getRutEmpleado(int index) {
         return sucursal.getEmpleado(index).getRut();
     }
-        
-    public static String getMinisterioEmpleado(int index){
+
+    public static String getMinisterioEmpleado(int index) {
         return sucursal.getEmpleado(index).getDepartamento();
     }
-            
-    public static String getCargoEmpleado(int index){
+
+    public static String getCargoEmpleado(int index) {
         return sucursal.getEmpleado(index).getCargo();
-    }   
-    
-        public static void leerReporte(Sucursal sucursal) throws CsvValidationException{
-        reporte.Leer(sucursal);     
-        System.out.println("Empleados registrados: ");
-        for(int i=0;i<sucursal.getSizeEmpleado();i++){
+    }
+
+    // Método para leer los datos del archivo CSV y mostrarlos
+    public static void leerReporte(Sucursal sucursal) throws CsvValidationException {
+        System.out.println("leerReporte");
+        empleados.Leer(sucursal);
+        System.out.println("leerReporte2");
+        for (int i = 0; i < sucursal.getSizeEmpleado(); i++) {
             sucursal.getEmpleado(i).leerEmpleado();
         }
     }
-        
-
 
   
   /*public static void mostrarMenu() {
@@ -210,56 +208,67 @@ public class Menu{
   }*/
 
 
-  
-    public static Empleado eliminarEmpleado(String rut){
-        Empleado empleadoEliminado;
-        return empleadoEliminado= sucursal.eliminarGetEmpleado(rut);
+ // Método para eliminar un empleado
+    public static void eliminarEmpleado() {
+        String rutEliminar = obtenerDato("Ingrese el RUT del empleado que desea eliminar: ");
+        boolean eliminado = sucursal.eliminarEmpleado(rutEliminar);
+        System.out.println(eliminado ? "Empleado eliminado exitosamente." : "No se encontró el empleado para eliminar.");
     }
 
+    // Método para obtener un dato del usuario
     public static String obtenerDato(String mensaje) {
         System.out.print(mensaje);
         return scanner.nextLine();
     }
 
+    // Método para obtener un dato opcional del usuario
     public static String obtenerDatoOpcional(String mensaje) {
         System.out.print(mensaje);
         return scanner.nextLine();
     }
 
+    // Método para obtener y parsear una fecha
     public static LocalDate obtenerFecha(String mensaje) {
+        System.out.println("Procesando la fecha: " + mensaje);
         LocalDate fecha = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
         try {
             fecha = LocalDate.parse(mensaje, formatter);  // Intenta parsear
         } catch (DateTimeParseException e) {
             System.out.println("Fecha inválida. Asegúrate de usar el formato YYYY-MM-DD.");
         }
-        
         return fecha;  // Retorna null si la fecha es inválida
     }
 
-  public static double obtenerSalario(String mensaje) {
-      while (true) {
-          try {
-              System.out.print(mensaje);
-              return Double.parseDouble(scanner.nextLine());
-          } catch (NumberFormatException e) {
-              System.out.println("Por favor, ingrese un número válido para el salario.");
-          }
-      }
-  }
+    // Método para obtener un salario válido del usuario
+    public static double obtenerSalario(String mensaje) {
+        while (true) {
+            try {
+                System.out.print(mensaje);
+                return Double.parseDouble(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, ingrese un número válido para el salario.");
+            }
+        }
+    }
 
-  public static double obtenerSalarioOpcional(String mensaje) {
-      String input = obtenerDatoOpcional(mensaje);
-      if (input.isEmpty()) {
-          return -1; 
-      }
-      try {
-          return Double.parseDouble(input);
-      } catch (NumberFormatException e) {
-          System.out.println("Valor no válido. El salario no se modificará.");
-          return -1;
-      }
-  }
+    // Método para obtener un salario opcional del usuario
+    public static double obtenerSalarioOpcional(String mensaje) {
+        String input = obtenerDatoOpcional(mensaje);
+        if (input.isEmpty()) {
+            return -1; 
+        }
+        try {
+            return Double.parseDouble(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Valor no válido. El salario no se modificará.");
+            return -1;
+        }
+    }
+
+    // Método para generar un informe de empleados
+    public static void generarInformeEmpleados() {
+        String rutaArchivo = "informe_empleados.txt";
+        GenerarInforme.generarInformeEmpleados(sucursal, rutaArchivo);
+    }
 }
