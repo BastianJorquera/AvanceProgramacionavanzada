@@ -26,7 +26,7 @@ import newpackage.Sucursal;
  * @author bajog
  */
 public class Reporte {
-    //Atributos
+    // Atributo que almacena la ruta del archivo CSV
     private final String path;
     
     //Constructor
@@ -35,16 +35,18 @@ public class Reporte {
     }
     
     
-    //Metodos
+    // Método para leer datos del archivo CSV y agregarlos a la Sucursal
     public void Leer(Sucursal empleados) throws CsvValidationException{
         File file = new File(this.path);
         
         try{
             FileReader inputFile = new FileReader(file);
+             // Configurar el parser CSV para usar punto y coma como separador
             CSVParser parser = new CSVParserBuilder()
                                     .withSeparator(';')
                                     .build();
             
+             // Construir el lector CSV
             CSVReader csvReader = new CSVReaderBuilder(inputFile)
                                                 .withCSVParser(parser)
                                                 .build();
@@ -72,7 +74,7 @@ public class Reporte {
         }
     }
     
-    
+    // Método para escribir un nuevo registro en el archivo CSV
    public boolean Escribir(String[] registro, Sucursal empleados) {
     File file = new File(this.path);
     try {
@@ -82,9 +84,11 @@ public class Reporte {
                                  CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                                  "\n");
         
+        // Verificar si el empleado ya existe
         if(usuarioYaExistente(registro[1], empleados)){
             return false;
         }
+        // Crear un nuevo empleado y agregarlo a la sucursal
         Empleado empleado = new Empleado(registro[0],registro[1],obtenerFecha(registro[2]),obtenerFecha(registro[3]), registro[4], Double.parseDouble(registro[5]), registro[6]);
         empleados.agregarEmpleado(empleado);
         csvWriter.writeNext(registro);
